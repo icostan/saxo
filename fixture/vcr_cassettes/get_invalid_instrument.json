@@ -1,0 +1,41 @@
+[
+  {
+    "request": {
+      "options": [],
+      "body": "",
+      "url": "https://gateway.saxobank.com/sim/openapi/chart/v1/charts?Uic=:uic&AssetType=:asset_type&Horizon=:horizon&count=1&field_groups=BlockInfo%2CChartInfo%2CData%2CDisplayAndFormat",
+      "headers": {
+        "accept-encoding": "gzip",
+        "authorization": "Bearer eyJhbGciOiJFUzI1NiIsIng1dCI6IjI3RTlCOTAzRUNGMjExMDlBREU1RTVCOUVDMDgxNkI2QjQ5REEwRkEifQ.eyJvYWEiOiI3Nzc3MCIsImlzcyI6Im9hIiwiYWlkIjoiMjE0NyIsInVpZCI6IjNqM2lZM3hTRURkZjNDOW16NnJXdWc9PSIsImNpZCI6IjNqM2lZM3hTRURkZjNDOW16NnJXdWc9PSIsImlzYSI6IkZhbHNlIiwidGlkIjoiNzE3MiIsInNpZCI6ImJkZjkxY2M1ZDEzNzQ3Njk5OWI1Yjg5ZjdhODE1NjQ5IiwiZGdpIjoiODQiLCJleHAiOiIxNzEyMzM5OTYyIiwib2FsIjoiMUYiLCJpaWQiOiI0ZWI3OTUwZmVlNGU0NzlkNDNkNjA4ZGM1M2RhY2Q4NyJ9.z9g1SlnAPJsnodoTW_a1sAPmahEh_yID1Q8vTqu_KwACOZJ_Elhtr5Tt0IyoVkx8V9btAIdFjrnSPbCkOHWWKg",
+        "user-agent": "req/0.4.14"
+      },
+      "method": "get",
+      "request_body": ""
+    },
+    "response": {
+      "binary": true,
+      "type": "ok",
+      "body": "g20AAADKH4sIAAAAAAAEAIWQMQvCQAyF/0rM0gpFnLuJCDqIgjpJkcNGPdCm5q4FLf3vprZKty65vMt7HyQVrsk5cyWMcZMRsMCDhSAXzkm8JQd8AX8jEHoW5DwYndqsNHebjjDCNad033njlVDhzDny+1eu4tgK8Kog/A/GYN0vP4GtcGlTSkF1QTHEpvGdmgwmES5Z7JuzBta1EHbNAOfWJRVysOcGoA+EWgaChbq/GQimQc+KSR3hQoRlrhvrtVbtf2//+gP1IFlRTQEAAA==",
+      "headers": {
+        "content-length": "202",
+        "content-type": "application/json; charset=utf-8",
+        "cache-control": "no-cache",
+        "content-encoding": "gzip",
+        "expires": "-1",
+        "pragma": "no-cache",
+        "x-ratelimit-appday-limit": "10000000",
+        "x-ratelimit-appday-remaining": "9999994",
+        "x-ratelimit-appday-reset": "86114",
+        "x-ratelimit-chartminute-limit": "120",
+        "x-ratelimit-chartminute-remaining": "119",
+        "x-ratelimit-chartminute-reset": "60",
+        "x-correlation": "bdf91cc5d137476999b5b89f7a815649#2147#b156c3d5-4459-4d33-bb25-950e4d8c9e9d#91",
+        "date": "Fri, 05 Apr 2024 13:47:52 GMT",
+        "connection": "keep-alive",
+        "vary": "Accept-Encoding",
+        "set-cookie": "oa-V4_ENT_DMZ_SIM_OA_CORE_8080=DMCEHEAK; Path=/"
+      },
+      "status_code": 400
+    }
+  }
+]

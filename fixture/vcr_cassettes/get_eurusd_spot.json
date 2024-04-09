@@ -1,0 +1,41 @@
+[
+  {
+    "request": {
+      "options": [],
+      "body": "",
+      "url": "https://gateway.saxobank.com/sim/openapi/chart/v1/charts?AssetType=FxSpot&Uic=21&Horizon=1440&Count=1&FieldGroups=ChartInfo%2CData%2CDisplayAndFormat&Mode=From&Time=2024-04-08",
+      "headers": {
+        "accept-encoding": "gzip",
+        "authorization": "Bearer eyJhbGciOiJFUzI1NiIsIng1dCI6IjI3RTlCOTAzRUNGMjExMDlBREU1RTVCOUVDMDgxNkI2QjQ5REEwRkEifQ.eyJvYWEiOiI3Nzc3NSIsImlzcyI6Im9hIiwiYWlkIjoiMTA5IiwidWlkIjoiM2ozaVkzeFNFRGRmM0M5bXo2cld1Zz09IiwiY2lkIjoiM2ozaVkzeFNFRGRmM0M5bXo2cld1Zz09IiwiaXNhIjoiRmFsc2UiLCJ0aWQiOiIyMDAyIiwic2lkIjoiYTAzNjRlMDJjMmViNGI5N2EwZTMzNTY2YjRmZjE2NDgiLCJkZ2kiOiI4NCIsImV4cCI6IjE3MjAzMzQxMDkiLCJvYWwiOiIxRiIsImlpZCI6IjRlYjc5NTBmZWU0ZTQ3OWQ0M2Q2MDhkYzUzZGFjZDg3In0.u425MqBj088_oPpsxbDYdjAkYa18iqR3qkJSeNKO-JOa3I76tIDGkfkgDYaPWpQ01Q3sOLTTD2jjftIzh_XQ5w",
+        "user-agent": "req/0.4.14"
+      },
+      "method": "get",
+      "request_body": ""
+    },
+    "response": {
+      "binary": true,
+      "type": "ok",
+      "body": "g20AAAE5H4sIAAAAAAAEAGWQ0U+DMBDG/xVzz2y2DNjgbYwtW6LRyGaMxocKdWssLWlZJi787ztg4oPNvfR33325+86wODBTbdSnhugMCZes5nlc3wt1rLiFiDiw/M4OTO35JocI0nj1Ag6shLFVyopS8q0oODZoOKUjghVsCYm6GpPuvaJ+rY340Qoi6nmkcSBhFYPo7QwLqS2f2y/sjMksIJ7To1jkPfJniNZif/gTTfyeDJqAIrnTp0Hi0rADg4KGCB5KrgbJ5JcMmtb2eoxLXG9EsGb/j2ne+/WfubGiOymcBnTqUx/nE2FLjHCu8pU2BavaUBdHY7jKavTdpQmGkfBMFExiul77sZkRZdVZwfJo9O0uvUm0lMy0QV9tYC6lPl0nH0VpsZfWxYeW7dTuqXVumgvEavBVzwEAAA==",
+      "headers": {
+        "content-length": "313",
+        "content-type": "application/json; charset=utf-8",
+        "cache-control": "no-cache",
+        "content-encoding": "gzip",
+        "expires": "-1",
+        "pragma": "no-cache",
+        "x-ratelimit-appday-limit": "10000000",
+        "x-ratelimit-appday-remaining": "9995271",
+        "x-ratelimit-appday-reset": "74196",
+        "x-ratelimit-chartminute-limit": "120",
+        "x-ratelimit-chartminute-remaining": "119",
+        "x-ratelimit-chartminute-reset": "60",
+        "x-correlation": "a0364e02c2eb4b97a0e33566b4ff1648#109#fd97cc25-c3c6-48eb-8781-90cb723b161c#112",
+        "vary": "Accept-Encoding",
+        "date": "Tue, 09 Apr 2024 07:42:27 GMT",
+        "connection": "keep-alive",
+        "set-cookie": "oa-V4_ENT_DMZ_SIM_OA_CORE_8080=DJBEHEAK; Path=/"
+      },
+      "status_code": 200
+    }
+  }
+]

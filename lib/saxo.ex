@@ -1,18 +1,13 @@
 defmodule Saxo do
-  @moduledoc """
-  Documentation for `Saxo`.
-  """
-
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> Saxo.hello()
-      :world
-
-  """
-  def hello do
-    :world
-  end
+  @moduledoc "Saxo namespace"
+  @type uic :: integer
+  @type asset_type ::
+          :Bond
+          | :Cash
+          | :ContractFutures
+          | :Etf
+          | :FuturesOption
+          | :FxForwards
+          | :FxSpot
+          | :FxSwap
 end

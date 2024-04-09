@@ -7,7 +7,8 @@ defmodule Saxo.MixProject do
       version: "0.1.0",
       elixir: "~> 1.16",
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      deps: deps(),
+      aliases: aliases()
     ]
   end
 
@@ -26,7 +27,19 @@ defmodule Saxo.MixProject do
       {:ex_doc, ">= 0.0.0", only: :dev, runtime: false},
       {:exvcr, "~> 0.11", only: [:dev, :test]},
       {:dialyxir, "~> 1.4", only: [:dev, :test], runtime: false},
-      {:credo, "~> 1.7", only: [:dev, :test], runtime: false}
+      {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
+      {:plug, "~> 1.0", only: [:dev, :test]}
+    ]
+  end
+
+  defp aliases do
+    [
+      check: [
+        "compile --warnings-as-errors --force",
+        "format --check-formatted",
+        "dialyzer",
+        "credo"
+      ]
     ]
   end
 end
