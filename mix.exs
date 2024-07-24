@@ -34,7 +34,8 @@ defmodule Saxo.MixProject do
   defp deps do
     [
       {:req, "~> 0.4"},
-      {:ex_doc, ">= 0.0.0", only: :dev, runtime: false},
+      {:nimble_options, "~> 1.1.1"},
+      {:ex_doc, ">= 0.0.0", only: [:dev], runtime: false},
       {:exvcr, "~> 0.11", only: [:dev, :test]},
       {:dialyxir, "~> 1.4", only: [:dev, :test], runtime: false},
       {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
