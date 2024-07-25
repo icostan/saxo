@@ -5,13 +5,13 @@ defmodule Saxo.HttpClientTest do
 
   describe ".get/2" do
     test "ok response" do
-      Req.Test.stub(HttpClient, fn conn ->
+      Req.Test.stub(HttpClientStub, fn conn ->
         conn
         |> Req.Test.json(%{"ok" => true})
       end)
 
       assert {:ok, %Response{status: 200, body: %{"ok" => true}}} =
-               HttpClient.get("/test", auth: "test", query: [], plug: {Req.Test, HttpClient})
+               HttpClient.get("/test", auth: "test", query: [])
     end
 
     test "error response" do

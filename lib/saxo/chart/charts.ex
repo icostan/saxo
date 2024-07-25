@@ -13,7 +13,7 @@ defmodule Saxo.Chart.Charts do
           | {:time, String.t()}
   @type options :: [option]
 
-  @path "/openapi/chart/v1/charts"
+  @path "/chart/v1/charts"
 
   @spec get(Credentials.t(), Saxo.asset_type(), Saxo.uic(), horizon, options) ::
           {:ok, Response.t()} | {:error, Response.t()}
@@ -32,7 +32,8 @@ defmodule Saxo.Chart.Charts do
         FieldGroups: field_groups,
         Mode: Keyword.get(options, :mode),
         Time: Keyword.get(options, :time)
-      ]
+      ],
+      plug: nil
     )
   end
 end
