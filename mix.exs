@@ -11,7 +11,13 @@ defmodule Saxo.MixProject do
       package: package(),
       start_permanent: Mix.env() == :prod,
       deps: deps(),
-      aliases: aliases()
+      aliases: aliases(),
+      releases: [
+        saxo_api: [
+          include_executables_for: [:unix],
+          steps: [:assemble, :tar]
+        ]
+      ]
     ]
   end
 
@@ -26,6 +32,7 @@ defmodule Saxo.MixProject do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
+      mod: {Saxo.Application, []},
       extra_applications: [:logger]
     ]
   end
@@ -35,6 +42,7 @@ defmodule Saxo.MixProject do
     [
       {:req, "~> 0.4"},
       {:nimble_options, "~> 1.1.1"},
+      {:libcluster, "~> 3.3"},
       {:ex_doc, ">= 0.0.0", only: [:dev], runtime: false},
       {:exvcr, "~> 0.11", only: [:dev, :test]},
       {:dialyxir, "~> 1.4", only: [:dev, :test], runtime: false},
