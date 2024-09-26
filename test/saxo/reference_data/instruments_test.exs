@@ -7,15 +7,13 @@ defmodule Saxo.ReferenceData.InstrumentsTest do
 
   describe ".get_futures_space/1" do
     test "missing required param" do
-      assert_raise NimbleOptions.ValidationError, ~r/required/, fn ->
-        Instruments.futures_space(@credentials, [])
-      end
+      assert {:error, %NimbleOptions.ValidationError{message: "required" <> _}} =
+               Instruments.futures_space(@credentials, [])
     end
 
     test "invalid required params" do
-      assert_raise NimbleOptions.ValidationError, ~r/invalid value/, fn ->
-        Instruments.futures_space(@credentials, ContinuousFuturesUic: "INVALID")
-      end
+      assert {:error, %NimbleOptions.ValidationError{message: "invalid value" <> _}} =
+               Instruments.futures_space(@credentials, ContinuousFuturesUic: "INVALID")
     end
   end
 end

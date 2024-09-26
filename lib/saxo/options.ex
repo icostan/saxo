@@ -1,68 +1,109 @@
 defmodule Saxo.Options do
   @moduledoc "Common options for Saxo API"
 
-  @asset_type [
-    type: {:in, Saxo.asset_types()},
-    required: true,
-    doc: "The type of the instrument to get, one of the following #{inspect(Saxo.asset_types())}"
-  ]
-  def asset_type(), do: @asset_type
+  def asset_type(),
+    do: [
+      type: {:in, Saxo.asset_types()},
+      required: true,
+      doc:
+        "The type of the instrument to get, one of the following #{inspect(Saxo.asset_types())}"
+    ]
 
-  @asset_types [
-    type: :string,
-    doc:
-      "Comma separated list of one or more asset types to search for. E.g. AssetTypes=FxSpot,Stock"
-  ]
-  def asset_types(), do: @asset_types
+  def asset_types(),
+    do: [
+      type: :string,
+      doc:
+        "Comma separated list of one or more asset types to search for. E.g. AssetTypes=FxSpot,Stock"
+    ]
 
-  @uic [
-    type: :integer,
-    required: true,
-    doc: "The Universal Instrument Code (UIC) of the instrument to get"
-  ]
-  def uic(), do: @uic
+  def uic(),
+    do: [
+      type: :integer,
+      required: true,
+      doc: "The Universal Instrument Code (UIC) of the instrument to get"
+    ]
 
-  @account_key [
-    type: :string,
-    doc:
-      "If specified, access permissions to instruments for the specified account will be evaluated"
-  ]
-  def account_key(), do: @account_key
+  def account_key(),
+    do: [
+      type: :string,
+      doc:
+        "If specified, access permissions to instruments for the specified account will be evaluated"
+    ]
 
-  @client_key [type: :string]
-  def client_key(), do: @client_key
+  def client_key(), do: [type: :string]
 
-  @field_groups [
-    type: {:in, [:SupportedOrderTypeSettings, :OrderSetting, :TradingSessions, :MarketData]},
-    doc:
-      " Comma separated list of the following options: :SupportedOrderTypeSettings, :OrderSetting, :TradingSessions, :MarketData "
-  ]
-  def field_groups(), do: @field_groups
+  def option_space_segment(),
+    do: [
+      type: {:in, [:AllDates, :DefaultDates, :SpecificDates, :None, :UnderlyingUic]},
+      doc: "Specify how large a segment of the complete option space to return"
+    ]
 
-  @option_space_segment [
-    type: {:in, [:AllDates, :DefaultDates, :SpecificDates, :None, :UnderlyingUic]},
-    doc: "Specify how large a segment of the complete option space to return"
-  ]
-  def option_space_segment(), do: @option_space_segment
+  def trading_status(),
+    do: [
+      type: {:in, [:NonTradable, :NotDefined, :ReduceOnly, :Tradable]},
+      doc: "Trading status of an instrument"
+    ]
 
-  @trading_status [
-    type: {:in, [:NonTradable, :NotDefined, :ReduceOnly, :Tradable]},
-    doc: "Trading status of an instrument"
-  ]
-  def trading_status(), do: @trading_status
+  def tags(), do: [type: :string]
 
-  @tags [type: :string]
-  def tags(), do: @tags
+  def uics(),
+    do: [
+      type: :string,
+      doc: "Limit list to return information for the following comma separated Uics"
+    ]
 
-  @uics [
-    type: :string,
-    doc: "Limit list to return information for the following comma separated Uics"
-  ]
-  def uics(), do: @uics
+  def skip(), do: [type: :integer]
 
-  @skip [type: :integer]
-  def skip(), do: @skip
+  def top(), do: [type: :integer]
 
-  @top [type: :integer]
-  def top(), do: @top
+  def count(),
+    do: [
+      type: :integer,
+      doc:
+        "Specifies maximum number of samples to return. Maximum is 1200. If not specified a default of 1200 samples are returned."
+    ]
+
+  def horizon(),
+    do: [
+      type: {:in, [1, 5, 10, 15, 30, 60, 120, 240, 360, 480, 1440, 10_080, 43_200]},
+      required: true,
+      doc:
+        "The time period that each sample covers. Values are interpreted in minutes: 1, 5, 10, 15, 30, 60, 120, 240, 360, 480, 1440, 10080, 43200."
+    ]
+
+  defmodule Charts do
+    @moduledoc false
+
+    def field_groups(),
+      do: [
+        type: {:list, {:in, [:BlockInfo, :ChartInfo, :Data, :DisplayAndFormat]}},
+        doc:
+          "Use FieldGroups (BlockInfo, ChartInfo, Data, DisplayAndFormat) to add additional information to the samples like display/formatting details or information about the price source. If FieldGroups are not specified in the request then the response defaults to only hold the bare OHLC samples and nothing else."
+      ]
+
+    def mode(),
+      do: [
+        type: {:in, [:From, :UpTo]},
+        doc:
+          "If Time is supplied, mode specifies if the endpoint should returns samples 'UpTo' (and including) or 'From' (and including) the specified time."
+      ]
+
+    def time(),
+      do: [
+        type: :string,
+        doc:
+          "Specifies the time of a sample, which must either be the first (If Mode==From) or the last (if Mode==UpTo) in the returned data."
+      ]
+  end
+
+  defmodule Instruments do
+    @moduledoc false
+
+    def field_groups(),
+      do: [
+        type: {:list, :string},
+        doc:
+          "Comma separated list of the following options: SupportedOrderTypeSettings, OrderSetting, TradingSessions, MarketData"
+      ]
+  end
 end

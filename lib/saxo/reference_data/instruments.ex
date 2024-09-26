@@ -1,5 +1,10 @@
 defmodule Saxo.ReferenceData.Instruments do
-  @moduledoc "End points serving instrument resources."
+  @moduledoc """
+  End points serving instrument resources.
+
+  https://www.developer.saxo/openapi/referencedocs/ref/v1/instruments
+  """
+
   use Saxo.Resource
   alias Saxo.Options
 
@@ -45,7 +50,7 @@ defmodule Saxo.ReferenceData.Instruments do
     "Use this operation to retrieve detailed information a list of instruments.",
     AccountKey: Options.account_key(),
     AssetTypes: Options.asset_types(),
-    FieldGroups: Options.field_groups(),
+    FieldGroups: Options.Instruments.field_groups(),
     Tags: Options.tags(),
     Uics: Options.uics()
   )
@@ -58,7 +63,7 @@ defmodule Saxo.ReferenceData.Instruments do
     "$top": Options.top(),
     AssetType: Options.asset_type(),
     Uic: Options.uic(),
-    FieldGroups: Options.field_groups(),
+    FieldGroups: Options.Instruments.field_groups(),
     AccountKey: Options.account_key(),
     ClientKey: Options.client_key()
   )

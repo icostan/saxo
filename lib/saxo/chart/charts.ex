@@ -1,39 +1,24 @@
 defmodule Saxo.Chart.Charts do
-  @moduledoc "https://www.developer.saxo/openapi/referencedocs/chart/v1/charts"
+  @moduledoc """
+  Services for getting chart data for instruments.
+  Allows you to set up subscriptions for streamed charts data.
 
-  alias Saxo.{Credentials, HttpClient, Response}
+  https://www.developer.saxo/openapi/referencedocs/chart/v1/charts
+  """
 
-  @type horizon :: 1 | 5 | 10 | 15 | 30 | 60 | 120 | 240 | 360 | 480 | 1440 | 10_080 | 43_200
-  @type mode :: :From | :UpTo
-  @type field_group :: :ChartInfo | :Data | :DisplayAndFormat
-  @type option ::
-          {:count, pos_integer}
-          | {:field_groups, list(field_group)}
-          | {:mode, mode}
-          | {:time, String.t()}
-  @type options :: [option]
+  use Saxo.Resource
+  alias Saxo.Options
 
-  @path "/chart/v1/charts"
-
-  @spec get(Credentials.t(), Saxo.asset_type(), Saxo.uic(), horizon, options) ::
-          {:ok, Response.t()} | {:error, Response.t()}
-  def get(credentials, asset_type, uic, horizon, options \\ []) do
-    field_groups =
-      Keyword.get(options, :field_groups, [:Data])
-      |> Enum.map_join(",", &Atom.to_string(&1))
-
-    HttpClient.get(@path,
-      auth: {:bearer, credentials.bearer},
-      query: [
-        AssetType: asset_type,
-        Uic: uic,
-        Horizon: horizon,
-        Count: Keyword.get(options, :count, 100),
-        FieldGroups: field_groups,
-        Mode: Keyword.get(options, :mode),
-        Time: Keyword.get(options, :time)
-      ],
-      plug: nil
-    )
-  end
+  def_resource(
+    :get_chart_data,
+    "/chart/v1/charts",
+    "Returns timestamped OHLC samples for a single instrument identified by UIC and AssetType. The time period covered by the samples and interval size between them are controlled by the combination of parameters Horizon, Time, Mode and Count.",
+    AssetType: Options.asset_type(),
+    Count: Options.count(),
+    FieldGroups: Options.Charts.field_groups(),
+    Horizon: Options.horizon(),
+    Mode: Options.Charts.mode(),
+    Time: Options.Charts.time(),
+    Uic: Options.uic()
+  )
 end
